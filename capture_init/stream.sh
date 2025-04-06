@@ -1,0 +1,1 @@
+gst-launch-1.0 -vv v4l2src ! "video/x-raw, format=UYVY, width=1920, height=1080, framerate=25/1" !  videorate ! videoscale ! video/x-raw, width=320, height=240, framerate=15/1 ! v4l2h264enc ! "video/x-h264, level=(string)4" ! h264parse config-interval=-1 ! mpegtsmux name=mux ! rtpmp2tpay ! tcpserversink host=0.0.0.0 port=9000
